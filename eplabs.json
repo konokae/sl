@@ -1,37 +1,37 @@
 [
     {
         "kategori": "Kuliner",
-        "title": "Sambal Pedas Terenak",
+        "judul": "Sambal Pedas Terenak",
         "url": "https://labs.elangpurwa.com/p/sambal-pedas-purwa.html"
     },
     {
         "kategori": "Fasion",
-        "title": "El Faza Taylor",
+        "judul": "El Faza Taylor",
         "url": "https://labs.elangpurwa.com/p/penjahit-profesional-el-faza.html"
     },
     {
         "kategori": "Hobi",
-        "title": "Sangkar Burung",
+        "judul": "Sangkar Burung",
         "url": "https://labs.elangpurwa.com/p/sangkar-burung-purwa-pilihan.html"
     },
     {
         "kategori": "Otomotif",
-        "title": "Bengkel Purwa",
+        "judul": "Bengkel Purwa",
         "url": "https://labs.elangpurwa.com/p/bengkel-purwa-motor.html"
     },
     {
         "kategori": "Kuliner",
-        "title": "Donat Lima",
+        "judul": "Donat Lima",
         "url": "https://labs.elangpurwa.com/p/donat-lima-terenak-di-dunia.html"
     },
     {
         "kategori": "APP",
-        "title": "Quran",
+        "judul": "Quran",
         "url": "https://labs.elangpurwa.com/p/home.html"
     },
     {
         "kategori": "APP",
-        "title": "YTAUD",
+        "judul": "YTAUD",
         "url": "https://labs.elangpurwa.com/p/ytaud_13.html"
     }
 ]

@@ -1,39 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var sizes = {
-        '336x280': { width: 336, height: 280 },
-        '300x250': { width: 300, height: 250 },
-        '728x90': { width: 728, height: 90 },
-        '970x90': { width: 970, height: 90 },
-        '970x250': { width: 970, height: 250 },
-        '300x600': { width: 300, height: 600 },
-        '160x600': { width: 160, height: 600 },
-        '320x100': { width: 320, height: 100 },
-        '320x50': { width: 320, height: 50 }
-    };
+// URL JSON yang berisi data template
+const url = 'https://raw.githubusercontent.com/konokae/sl/main/datatheme/template_collect.json';
 
-    // Fungsi untuk menyesuaikan ukuran gambar berdasarkan class size
-    Object.keys(sizes).forEach(function(size) {
-        var elements = document.querySelectorAll('.size-' + size.replace('x', ''));
-        elements.forEach(function(element) {
-            element.style.width = sizes[size].width + 'px';
-            element.style.height = sizes[size].height + 'px';
-        });
-    });
-
-    // Fungsi untuk mengganti shortcode dengan konten iklan
-    function replaceShortcodes() {
-        var shortcodes = document.querySelectorAll('[data-shortcode]');
-        shortcodes.forEach(function(shortcode) {
-            var adId = shortcode.getAttribute('data-shortcode').match(/ad id="(\d+)"/)[1];
-            fetch('/get_ad.php?id=' + adId)
-                .then(response => response.json())
-                .then(data => {
-                    var adHtml = '<img src="' + data.image_url + '" width="' + sizes[data.size].width + '" height="' + sizes[data.size].height + '" alt="' + data.title + '">';
-                    shortcode.innerHTML = adHtml;
-                });
-        });
+// Fungsi untuk mengambil data dari URL JSON
+async function fetchTemplates() {
+    try {
+        const response = await fetch(url);
+        const templates = await response.json();
+        return templates;
+    } catch (error) {
+        console.error('Error fetching templates:', error);
+        return [];
     }
+}
 
-    // Panggil fungsi untuk mengganti shortcode setelah halaman dimuat
-    replaceShortcodes();
+// Fungsi untuk memanggil template berdasarkan id
+async function getTemplateById(id) {
+    const templates = await fetchTemplates();
+    const template = templates.find(t => t.id === id);
+    if (template) {
+        return template.template;
+    } else {
+        return '<p>Template tidak ditemukan</p>'; // atau sesuaikan dengan pesan yang diinginkan
+    }
+}
+
+// Mengambil semua elemen div dengan ID yang dimulai dengan "shortcode-"
+const shortcodeDivs = document.querySelectorAll('div[id^="shortcode-"]');
+
+// Memuat dan menempatkan template ke dalam masing-masing elemen div
+shortcodeDivs.forEach(async div => {
+    const templateId = div.id.split('-')[1]; // Mendapatkan id dari shortcode
+    const templateContent = await getTemplateById(templateId);
+    div.innerHTML = templateContent;
 });

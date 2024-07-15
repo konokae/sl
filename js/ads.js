@@ -1,5 +1,5 @@
 function copyToClipboard(modalId) {
-    var copyText = document.querySelector('#' + modalId + ' code').innerText;
+    var copyText = document.querySelector('#' + modalId + ' .content code').innerText;
     var textarea = document.createElement('textarea');
     textarea.value = copyText;
     document.body.appendChild(textarea);
@@ -34,5 +34,16 @@ document.addEventListener('DOMContentLoaded', function() {
             element.style.width = sizes[size].width + 'px';
             element.style.height = sizes[size].height + 'px';
         });
+    });
+
+    // Proses shortcode di halaman
+    var shortcodes = document.querySelectorAll('code[shortcode]');
+    shortcodes.forEach(function(shortcode) {
+        var adId = shortcode.getAttribute('shortcode').match(/ad id="(\d+)"/)[1];
+        fetch('/get_ad.php?id=' + adId)
+            .then(response => response.json())
+            .then(data => {
+                shortcode.outerHTML = '<img src="' + data.image_url + '" width="' + sizes[data.size].width + '" height="' + sizes[data.size].height + '" alt="' + data.title + '">';
+            });
     });
 });

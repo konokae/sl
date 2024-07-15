@@ -24,12 +24,12 @@ async function getTemplateById(id) {
     }
 }
 
-// Mengambil semua elemen div dengan ID yang dimulai dengan "shortcode-"
-const shortcodeDivs = document.querySelectorAll('div[id^="shortcode-"]');
-
-// Memuat dan menempatkan template ke dalam masing-masing elemen div
-shortcodeDivs.forEach(async div => {
-    const templateId = div.id.split('-')[1]; // Mendapatkan id dari shortcode
-    const templateContent = await getTemplateById(templateId);
-    div.innerHTML = templateContent;
+// Memuat dan menempatkan template ke dalam semua elemen div dengan ID yang dimulai dengan "shortcode-"
+document.addEventListener('DOMContentLoaded', async () => {
+    const shortcodeDivs = document.querySelectorAll('div[id^="shortcode-"]');
+    shortcodeDivs.forEach(async div => {
+        const templateId = div.id.split('-')[1]; // Mendapatkan id dari shortcode
+        const templateContent = await getTemplateById(templateId);
+        div.innerHTML = templateContent;
+    });
 });

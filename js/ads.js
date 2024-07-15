@@ -1,20 +1,3 @@
-function copyToClipboard(modalId) {
-    var copyText = document.querySelector('#' + modalId + ' .content code').innerText;
-    var textarea = document.createElement('textarea');
-    textarea.value = copyText;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-    
-    var alertBox = document.getElementById('alert-' + modalId.split('-')[1]);
-    alertBox.style.display = 'block';
-    setTimeout(function() {
-        alertBox.style.display = 'none';
-    }, 2000);
-}
-
-// Fungsi untuk mengatur ukuran gambar berdasarkan class size
 document.addEventListener('DOMContentLoaded', function() {
     var sizes = {
         '336x280': { width: 336, height: 280 },
@@ -28,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '320x50': { width: 320, height: 50 }
     };
 
+    // Fungsi untuk menyesuaikan ukuran gambar berdasarkan class size
     Object.keys(sizes).forEach(function(size) {
         var elements = document.querySelectorAll('.size-' + size.replace('x', ''));
         elements.forEach(function(element) {
@@ -36,14 +20,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Proses shortcode di halaman
-    var shortcodes = document.querySelectorAll('code[shortcode]');
-    shortcodes.forEach(function(shortcode) {
-        var adId = shortcode.getAttribute('shortcode').match(/ad id="(\d+)"/)[1];
-        fetch('/get_ad.php?id=' + adId)
-            .then(response => response.json())
-            .then(data => {
-                shortcode.outerHTML = '<img src="' + data.image_url + '" width="' + sizes[data.size].width + '" height="' + sizes[data.size].height + '" alt="' + data.title + '">';
-            });
-    });
+    // Fungsi untuk mengganti shortcode dengan konten iklan
+    function replaceShortcodes() {
+        var shortcodes = document.querySelectorAll('[data-shortcode]');
+        shortcodes.forEach(function(shortcode) {
+            var adId = shortcode.getAttribute('data-shortcode').match(/ad id="(\d+)"/)[1];
+            fetch('/get_ad.php?id=' + adId)
+                .then(response => response.json())
+                .then(data => {
+                    var adHtml = '<img src="' + data.image_url + '" width="' + sizes[data.size].width + '" height="' + sizes[data.size].height + '" alt="' + data.title + '">';
+                    shortcode.innerHTML = adHtml;
+                });
+        });
+    }
+
+    // Panggil fungsi untuk mengganti shortcode setelah halaman dimuat
+    replaceShortcodes();
 });

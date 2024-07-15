@@ -24,12 +24,16 @@ async function getTemplateById(id) {
     }
 }
 
-// Memuat dan menempatkan template ke dalam semua elemen div dengan ID yang dimulai dengan "shortcode-"
-document.addEventListener('DOMContentLoaded', async () => {
+// Mengambil semua elemen div dengan ID yang dimulai dengan "shortcode-"
+async function loadTemplates() {
     const shortcodeDivs = document.querySelectorAll('div[id^="shortcode-"]');
-    shortcodeDivs.forEach(async div => {
+    
+    for (const div of shortcodeDivs) {
         const templateId = div.id.split('-')[1]; // Mendapatkan id dari shortcode
         const templateContent = await getTemplateById(templateId);
         div.innerHTML = templateContent;
-    });
-});
+    }
+}
+
+// Memuat template setelah halaman selesai dimuat
+document.addEventListener('DOMContentLoaded', loadTemplates);

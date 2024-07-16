@@ -1,37 +1,42 @@
 [
-    {
-        "kategori": "Kuliner",
-        "judul": "Sambal Pedas Terenak",
-        "url": "https://labs.elangpurwa.com/p/sambal-pedas-purwa.html"
-    },
-    {
-        "kategori": "Fasion",
-        "judul": "El Faza Taylor",
-        "url": "https://labs.elangpurwa.com/p/penjahit-profesional-el-faza.html"
-    },
-    {
-        "kategori": "Hobi",
-        "judul": "Sangkar Burung",
-        "url": "https://labs.elangpurwa.com/p/sangkar-burung-purwa-pilihan.html"
-    },
-    {
-        "kategori": "Otomotif",
-        "judul": "Bengkel Purwa",
-        "url": "https://labs.elangpurwa.com/p/bengkel-purwa-motor.html"
-    },
-    {
-        "kategori": "Kuliner",
-        "judul": "Donat Lima",
-        "url": "https://labs.elangpurwa.com/p/donat-lima-terenak-di-dunia.html"
-    },
-    {
-        "kategori": "APP",
-        "judul": "Quran",
-        "url": "https://labs.elangpurwa.com/p/home.html"
-    },
-    {
-        "kategori": "APP",
-        "judul": "YTAUD",
-        "url": "https://labs.elangpurwa.com/p/ytaud_13.html"
-    }
+  {
+    "kategori": "Kuliner",
+    "judul": "Sambal Pedas Terenak",
+    "url": "https://labs.elangpurwa.com/p/sambal-pedas-purwa.html"
+  },
+  {
+    "kategori": "Fasion",
+    "judul": "El Faza Taylor",
+    "url": "https://labs.elangpurwa.com/p/penjahit-profesional-el-faza.html"
+  },
+  {
+    "kategori": "Hobi",
+    "judul": "Sangkar Burung",
+    "url": "https://labs.elangpurwa.com/p/sangkar-burung-purwa-pilihan.html"
+  },
+  {
+    "kategori": "Otomotif",
+    "judul": "Bengkel Purwa",
+    "url": "https://labs.elangpurwa.com/p/bengkel-purwa-motor.html"
+  },
+  {
+    "kategori": "Kuliner",
+    "judul": "Donat Lima",
+    "url": "https://labs.elangpurwa.com/p/donat-lima-terenak-di-dunia.html"
+  },
+  {
+    "kategori": "Edukasi",
+    "judul": "Les Private Matematika",
+    "url": "https://labs.elangpurwa.com/p/guru-les-private-matematika.html"
+  },
+  {
+    "kategori": "APP",
+    "judul": "Quran",
+    "url": "https://labs.elangpurwa.com/p/home.html"
+  },
+  {
+    "kategori": "APP",
+    "judul": "YTAUD",
+    "url": "https://labs.elangpurwa.com/p/ytaud_13.html"
+  }
 ]

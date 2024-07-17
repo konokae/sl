@@ -7,9 +7,9 @@
   },
   {
     "id": "2",
-    "kategori": "elemen",
-    "title": "menutop",
-    "template": " <!-- Floating Menu -->\n    <div class=\"\"floating-menu\"\">\n        <a href=\"\"https://labs.elangpurwa.com/\"\"><i class=\"\"fas fa-home\"\"></i></a>\n        <div class=\"\"menu-title\"\">Penjahit El Faza</div>\n        <a href=\"\"#contact\"\"><i class=\"\"fab fa-whatsapp\"\"></i> Contact Us</a>\n    </div>"
+    "kategori": "batch01",
+    "title": "Jago ai 300x250",
+    "template": "<div class=\"separator\" style=\"clear: both;\"><a href=\"https://jagoai.biz\" style=\"display: block; padding: 1em 0; text-align: center; \"><img alt=\"\" border=\"0\" data-original-height=\"1080\" data-original-width=\"1080\" src=\"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNRth0Z6DAdHapQm8KUxs2eaT1u8M4cejZlCZOjSp1fq07D1pDH9WiSBm1KrP8pB_suFFjqmaQGYSH7W1h6l3WFVJzWPZffRH6gLImtuT5UkBqckxmDOmrcBvWgfQYQVLHdXtWLvLVF60S2Dr-yIe2plsAFMB810gdBbE_5YqM7TGjUfiNr_EQUCYbN3w/s1600/jago%20ai%20banner.jpeg\"/></a></div>"
   },
   {
     "id": "3",

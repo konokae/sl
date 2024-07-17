@@ -3,7 +3,7 @@
     "id": "1",
     "kategori": "ads",
     "title": "ep ads 01",
-    "template": " <div class='col d-flex flex-column align-items-center gap-2'>\n                            <h2 class='fw-bold text-body-emphasis'>Laman Project EP</h2>\n                            <p class='text-body-secondary'>Yang Anda lihat adalah project EP, bagian dari elangpurwa.com</p>\n                            <div class='d-flex gap-2'>\n                                <a class='btn btn-primary btn-lg custom-primary fas fa-angle-double-left' href='https://labs.elangpurwa.com/'> Project Lain</a>\n                                <a class='btn btn-warning btn-lg custom-warning' href='#' id='contact'>Hubungi Kami</a>            \n                            </div>\n                        </div>"
+    "template": " <div class='col d-flex flex-column align-items-center gap-2'>\n                            <h2 class='fw-bold text-body-emphasis'>Laman Project EP</h2>\n                            <p class='text-body-secondary'>Yang Anda lihat adalah project EP, bagian dari elangpurwa.com</p>\n                            <div class='d-flex gap-2'>\n                                <a class='btn btn-primary btn-lg custom-primary' href='https://labs.elangpurwa.com/'> Project Lain</a>\n                                <a class='btn btn-warning btn-lg custom-warning' href='https://api.whatsapp.com/send?phone=+6285708973489&text=Assalamu%27alaikum%2C+Kak%2C' target='_blank'>Hubungi Kami</a>            \n                            </div>\n                        </div>"
   },
   {
     "id": "2",

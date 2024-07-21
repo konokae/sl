@@ -46,5 +46,11 @@
     "kategori": "ads",
     "title": "tmp 03",
     "template": "<div>Ok, brader, i know!!!</div>"
+  },
+  {
+    "id": "9",
+    "kategori": "ads",
+    "title": "tmp 03",
+    "template": "<div>Ok, brader, i know!!!</div>"
   }
 ]

@@ -45,6 +45,60 @@
     "id": "8",
     "kategori": "ads",
     "title": "tmp 03",
-    "template": "test>"
+    "template": "<link href="https://cdn.jsdelivr.net/npm/picnic@7.1.0/picnic.min.css" rel="stylesheet">
+<div class="tabs three" style="text-align: center;">
+      <input id="tabC-1" type="radio" name="tabgroupC" checked="">
+      <label class="pseudo button toggle" for="tabC-1">1</label> /
+      <input id="tabC-2" type="radio" name="tabgroupC">
+      <label class="pseudo button toggle" for="tabC-2">2</label> /
+      <input id="tabC-3" type="radio" name="tabgroupC">
+      <label class="pseudo button toggle" for="tabC-3">3</label>
+      <div class="row">
+        <div>
+          <div class="card" style="margin: 0 20px;">
+            <header><h3>Super important notice!</h3></header>
+            <p>
+              Thank you for registering! By doing so you agree to the
+              <a href="#">Terms and conditions</a>
+            </p>
+            <footer><label class="button" for="tabC-2">Agree</label></footer>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="margin: 0 20px;">
+            <header><h3>Your basic data</h3></header>
+            <section><input type="text" placeholder="Full Name"></section>
+            <section>
+              <div class="select">
+                <select>
+                  <option>Where did you find us?</option>
+                  <option>Facebook</option>
+                  <option>Twitter</option>
+                  <option>Linkedin</option>
+                </select>
+              </div>
+            </section>
+            <footer>
+              <label class="button" for="tabC-3">Next</label>
+              <label class="button dangerous" for="tabC-1">Back</label>
+            </footer>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="margin: 0 20px;">
+            <header><h3>Create account</h3></header>
+            <section><input type="email" placeholder="Email"></section>
+            <section><input type="password" placeholder="Password"></section>
+            <footer>
+              <button class="success">Finish!</button>
+              <label class="button dangerous" for="tabC-2">Back</label>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/picnic@7.1.0/Gruntfile.min.js"></script>"
   }
 ]

@@ -45,6 +45,42 @@
     "id": "8",
     "kategori": "ads",
     "title": "tmp 03",
-    "template": "ok, brother!"
+    "template": "<script>
+<!-- 
+	var rotator1imgs = new Array("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmcy9os0t4K5vj4DHb-5FZj_IyV3jUeD81aCsGo8XQBHhAFQ0uWauT0JGj1zuxGOnSuzm3LFsTMzWOMjGBtdFxgq1Z29EIRoZoW9KU4yyEwetjhvdjx41Gfu5LiVY2pDKFcw89gmpmy4sSEHcrStCJkCzapmAiy_tN9zYtWyz3_yXQLvPBHJWjDB7Lvna4/s200/chip-atm.png");
+	var rotator1lnks = new Array("");
+	var rotator1alt = new Array("");
+	var rotatorHtml = "";
+	var endJs = "";
+
+	for(var img in rotator1imgs){
+		var thisImg = new Image();
+		thisImg.src = rotator1imgs[img];
+	}
+	var rotator1imgCt = 2;
+	var rotator1currentAd = 0;
+	var target = "";
+	var rotator1banner = document.getElementById('rotator1');
+	var rotator1link = document.getElementById('rotator1adLink');
+	
+	function rotator1cycle() {
+		var rotatorHtml = "";
+		var endJs = "";
+		if (rotator1currentAd == rotator1imgCt) {
+			rotator1currentAd = 0;
+		}
+
+			if(rotator1lnks[rotator1currentAd] != ""){
+		rotatorHtml += '<a href="' + rotator1lnks[rotator1currentAd] + '" id="rotator1adLink" >';
+		endJs = "</a>";
+	}
+	rotatorHtml += '<img src="' + rotator1imgs[rotator1currentAd] + '" alt = "' + rotator1alt[rotator1currentAd] + '" id="rotator1">' + endJs;
+	document.getElementById("rotator1_div").innerHTML = rotatorHtml;	
+		rotator1currentAd++;
+		window.setTimeout(rotator1cycle,30000);
+	}
+	rotator1cycle();
+// -->
+</script>"
   }
 ]

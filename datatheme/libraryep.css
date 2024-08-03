@@ -1,102 +1,100 @@
-        .pricing {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+/* styles.css */
 
-        .plan {
-        background-color: #fff;
-        padding: 2.5rem;
-        margin: 12px;
-        border-radius: 5px;
-        text-align: center;
-        transition: 0.3s;
-        cursor: pointer;
+/* Banner 720x90 */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
-        h2 {
-          font-size: 22px;
-          margin-bottom: 12px;
-        }
-
-        .price {
-          margin-bottom: 1rem;
-          font-size: 30px;
-        }
-
-        ul.features {
-        list-style-type: none;
-        text-align: left;
-        li {
-        margin: 8px;
-        .fas {
-          margin-right: 4px;
-        }
-        .fa-check-circle {
-          color: #6ab04c;
-        }
-        .fa-times-circle {
-          color: #eb4d4b;
-        }
-      }
-      }
-
-      button {
-      border: none;
-      width: 100%;
-      padding: 12px 35px;
-      margin-top: 1rem;
-      background-color: #6ab04c;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      }
-
-      &.popular {
-      border: 2px solid #6ab04c;
-      position: relative;
-      transform: scale(1.08);
-      span {
-        position: absolute;
-        top: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #6ab04c;
-        color: #fff;
-        padding: 4px 20px;
-        font-size: 18px;
-        border-radius: 5px;
-      }
-    }
-
-    &:hover {
-      box-shadow: 5px 7px 67px -28px rgba(0, 0, 0, 0.37);
-    }
-  }
+.banner720x90 {
+    width: 720px;
+    height: 90px;
+    background: linear-gradient(90deg, #4A90E2, #9013FE);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-  .thumbposthead {
-      width: 100%;
-      height: auto;
-      float: left;
-      background: #fffed0c4;
-      border: 1px dashed #2b5db3;
-      margin: 1px 0;
-      padding: 8px;
-      border-radius: 10px;
-    }
-    .callout {
-      padding: 20px;
-      margin: 20px 0;
-      border: 1px solid #eee;
-      border-left-width: 5px;
-      border-radius: 3px;
-    }
-    .callout-default { border-left-color: #777; }
-    .callout-primary { border-left-color: #428bca; }
-    .callout-success { border-left-color: #5cb85c; }
-    .callout-info { border-left-color: #5bc0de; }
-    .callout-warning { border-left-color: #f0ad4e; }
-    .callout-danger { border-left-color: #d9534f; }
-    .callout h4 { margin-top: 0; margin-bottom: 5px; }
-    .callout p:last-child { margin-bottom: 0; }
-    .alert { display: none; }
-  
+.banner720x90 .content {
+    display: flex;
+    align-items: center;
+}
+.banner720x90 .icon {
+    margin-right: 15px;
+}
+.banner720x90 .headline {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.banner720x90 .subheadline {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.banner720x90 .cta {
+    background-color: #F5A623;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+.banner720x90 .cta:hover {
+    background-color: #D48820;
+}
+.banner720x90 .cta-icon {
+    margin-left: 10px;
+}
+
+/* Banner 336x280 */
+.banner336x280 {
+    width: 336px;
+    height: 280px;
+    background: linear-gradient(135deg, #6D5BBA, #8D58BF, #B155B9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.banner336x280 .icon {
+    width: 60px;
+    height: 60px;
+}
+.banner336x280 .headline {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.banner336x280 .subheadline {
+    font-size: 16px;
+    margin: 10px 0;
+}
+.banner336x280 .cta {
+    background-color: #F5A623;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner336x280 .cta:hover {
+    background-color: #D48820;
+}
+.banner336x280 .cta-icon {
+    margin-left: 10px;
+}

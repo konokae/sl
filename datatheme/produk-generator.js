@@ -1,80 +1,93 @@
-(function(){
-  // Fungsi utama untuk render produk
-  window.renderProduk = function(targetId) {
-    const container = document.getElementById(targetId);
-    if (!container) return;
 
-    container.innerHTML = `
-      <div class="card shadow-sm p-4 mb-3">
-        <h3 class="fw-bold mb-3 text-center">Generator Produk</h3>
+        let autoId = 1;
+        async function fetchBlogspotData(feedUrl, isPost = true) {
+          const response = await fetch(feedUrl);
+          const data = await response.json();
 
-        <!-- Form input -->
-        <div class="mb-3">
-          <label class="form-label">Nama Produk</label>
-          <input type="text" class="form-control" id="prod-name" placeholder="Masukkan nama produk"/>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Harga Produk</label>
-          <input type="text" class="form-control" id="prod-price" placeholder="Masukkan harga"/>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Link Produk</label>
-          <input type="text" class="form-control" id="prod-link" placeholder="Masukkan URL produk"/>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Gambar Produk</label>
-          <input type="text" class="form-control" id="prod-img" placeholder="URL gambar produk"/>
-        </div>
+          return data.feed.entry.map(entry =&gt; {
+            const title = entry.title.$t;
+            const url = entry.link.find(link =&gt; link.rel === &#39;alternate&#39;).href;
+            const content = entry.content?.$t || &#39;&#39;;
 
-        <button class="btn btn-primary w-100 mb-3" id="btn-generate">Generate</button>
+            const categoryMatch = content.match(/<!--\s*Category:\s*(.*?)\s*-->/i);
+            const category = categoryMatch ? categoryMatch[1].trim() : (entry.category?.[0]?.term || &#39;Uncategorized&#39;);
 
-        <!-- Preview produk -->
-        <div id="prod-preview" class="border rounded p-3 d-none bg-light"></div>
+            const rawIdMatch = entry.id?.$t?.match(/(?:post|page)-(\d+)/);
+            let customId = autoId++;
+            if (rawIdMatch) {
+              const originalId = rawIdMatch[1];
+              const first2 = originalId.substring(0, 2);
+              const last1 = originalId.slice(-1);
+              customId = `${first2}${last1}`;
+            }
 
-        <!-- Hasil kode -->
-        <div class="mt-3 d-none" id="prod-result">
-          <label class="form-label fw-bold">Kode HTML:</label>
-          <textarea class="form-control" rows="6" id="prod-code" readonly></textarea>
-          <button class="btn btn-success mt-2 w-100" id="btn-copy">Copy Kode</button>
-        </div>
-      </div>
-    `;
+            const labels = [category];
+            return { title, url, labels, id: customId };
+          });
+        }
 
-    // Event generate
-    const btnGenerate = container.querySelector("#btn-generate");
-    const preview = container.querySelector("#prod-preview");
-    const resultBox = container.querySelector("#prod-result");
-    const codeBox = container.querySelector("#prod-code");
+        function groupByCategory(data) {
+          const categoryMap = {};
+          data.forEach(item =&gt; {
+            item.labels.forEach(label =&gt; {
+              if (!categoryMap[label]) {
+                categoryMap[label] = [];
+              }
+              categoryMap[label].push(item);
+            });
+          });
+          return categoryMap;
+        }
 
-    btnGenerate.addEventListener("click", () => {
-      const name = container.querySelector("#prod-name").value || "Nama Produk";
-      const price = container.querySelector("#prod-price").value || "Rp 0";
-      const link = container.querySelector("#prod-link").value || "#";
-      const img = container.querySelector("#prod-img").value || "https://placehold.co/600x400";
+        function createLinkItem(link) {
+          return `
+            <a class='text-decoration-none d-block mb-2' href='${link.url}' target='_blank'>
+              <div class='d-flex align-items-center p-3 rounded shadow-sm bg-white border-start border-4 border-primary'>
+                <div class='fs-5 fw-bold text-muted'>${link.id}</div>
+                <div class='flex-grow-1 px-3 fw-semibold'>${link.title}</div>
+                <iconify-icon icon='mdi:tag' width='20'/>
+              </div>
+            </a>`;
+        }
 
-      const template = `
-        <div class="card shadow-sm p-3 text-center">
-          <img src="${img}" class="img-fluid rounded mb-3" alt="${name}"/>
-          <h5 class="fw-bold">${name}</h5>
-          <p class="text-muted">${price}</p>
-          <a href="${link}" target="_blank" class="btn btn-primary">Beli Sekarang</a>
-        </div>
-      `;
+        function createCategorySection(category, links) {
+          return `
+            <div class='my-category'><i class='fa fa-th-large'/> ${category}</div>
+            <div class='my-link-list'>
+              ${links.slice(0,5).map(createLinkItem).join(&#39;&#39;)}
+            </div>`;
+        }
 
-      preview.innerHTML = template;
-      preview.classList.remove("d-none");
+        async function renderContent() {
+          const contentContainer = document.getElementById(&#39;my-content-container&#39;);
+          const pagesData = await fetchBlogspotData(&#39;https://tikshoope.blogspot.com/feeds/pages/default?alt=json&amp;max-results=100&#39;);
+          const postsData = await fetchBlogspotData(&#39;https://tikshoope.blogspot.com/feeds/posts/default?alt=json&amp;max-results=100&#39;);
 
-      codeBox.value = template.trim();
-      resultBox.classList.remove("d-none");
-    });
+          const combinedData = [...pagesData, ...postsData];
+          const uniqueData = combinedData.filter((item, index, self) =&gt;
+            index === self.findIndex(t =&gt; t.url === item.url)
+          );
 
-    // Event copy
-    const btnCopy = container.querySelector("#btn-copy");
-    btnCopy.addEventListener("click", () => {
-      codeBox.select();
-      document.execCommand("copy");
-      btnCopy.textContent = "✅ Copied!";
-      setTimeout(() => btnCopy.textContent = "Copy Kode", 2000);
-    });
-  };
-})();
+          const grouped = groupByCategory(uniqueData);
+          const excludedCategories = [&#39;satu&#39;, &#39;LP&#39;, &#39;Uncategorized&#39;];
+
+          const columns = [&#39;&#39;, &#39;&#39;, &#39;&#39;];
+          let i = 0;
+          for (const [category, links] of Object.entries(grouped)) {
+            if (!excludedCategories.includes(category)) {
+              columns[i % 3] += createCategorySection(category, links);
+              i++;
+            }
+          }
+
+          columns.forEach(column =&gt; {
+            const columnDiv = document.createElement(&#39;div&#39;);
+            columnDiv.className = &#39;my-column&#39;;
+            columnDiv.innerHTML = column;
+            contentContainer.appendChild(columnDiv);
+          });
+        }
+
+        renderContent();
+
+  
